@@ -1,12 +1,11 @@
-interface Person {
-    firstName: string;
-    lastName: string;
-}
+import axios, {
+    AxiosResponse,
+    AxiosError} from "../../node_modules/axios/index";
 
-function greeter(person: Person): string {
-    return "Hello, " + person.firstName + " " + person.lastName;
-}
-let user: Person = { firstName: "John", lastName: "Doe" };
+    //http://rest-pele-easj-dk.azurewebsites.net/api/Cars
 
-let element: HTMLDivElement = <HTMLDivElement> document.getElementById("content");
-element.innerHTML = greeter(user);
+    interface ICar {
+        model:string;
+        vendor:string;
+        price:number;
+    }
