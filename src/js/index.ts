@@ -8,21 +8,27 @@ import axios, {
         price:number;
     }
 
+    let divContent:HTMLDivElement = <HTMLDivElement> document.getElementById("content");
     let getAllCars:HTMLButtonElement = <HTMLButtonElement> document.getElementById("getAllButton");
     getAllCars.addEventListener('click',showAllCars);
 
     function showAllCars():void {
-        let uri:string = "http://rest-pele-easj-dk.azurewebsites.net/api/Cars";
+        let uri:string = "http://resst-pele-easj-dk.azurewebsites.net/api/Cars";
 
         axios.get<ICar[]>(uri)
         .then(function (response:AxiosResponse<ICar[]>):void{
 
             let result:string = "<ol>";
             response.data.forEach((car:ICar)=>{
-                result += "<li>" + car.model + car.vendor + car.price.toString() + "</li>"
+                result += "<li>" + "Model: " + car.model + " Mærke: " + car.vendor + " Pris: " + car.price.toString() + "</li>"
             });
             result += "</ol>";
+            divContent.innerHTML = result;
         }
         )
-        .catch()
+        .catch(function (error:AxiosError):void{
+            
+                divContent.innerHTML = error.stack;
+            
+        })
     }
