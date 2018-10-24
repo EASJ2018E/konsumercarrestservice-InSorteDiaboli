@@ -13,3 +13,14 @@ h2
 h1{
     @extend h2;
 }
+
+.leftfloater {
+    float: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#carDelete {
+    width: 60px;
+    height: 20px;
+}
